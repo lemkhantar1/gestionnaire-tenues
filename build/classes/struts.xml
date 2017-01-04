@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources"
+		value="ApplicationResources" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<default-action-ref name="pagenotfound"></default-action-ref>
+		<action name="pagenotfound">
+			<result name="success">/PageNotFound.jsp</result>
+		</action>
+		<action name="login" class="bankelmaghrib.LoginAction">
+			<result name="success" type="chain">agents</result>
+			<result name="input">Login.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="agents" class="bankelmaghrib.AgentsAction" method="execute">
+			<result name="success" type="tiles">/agents.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="agentUpload" class="bankelmaghrib.UploadAction" method="execute">
+		    <interceptor-ref name="fileUpload">
+       			<param name="allowedTypes">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel</param>
+       			<param name="maximumSize">200000000</param>
+  	    	</interceptor-ref>
+  	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">/successimportagents.tiles</result>
+			<result name="error" type="tiles">/failedimportagents.tiles</result>
+			<result name="input" type="tiles">/failedimportagents.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="downloadAgents" class="bankelmaghrib.AgentsAction" method="prepareFile">
+	        <result name="success" type="stream">
+	            <param name="contentType">application/octet-stream</param>
+	            <param name="inputName">fileInputStream</param>
+	            <param name="contentDisposition">attachment;filename="AGENTS.XLSX"</param>
+	            <param name="bufferSize">200000000</param>
+	        </result>
+	        <result name="logout" type="chain" >logout</result>
+    	</action> 
+		<action name="deleteAgent" class="bankelmaghrib.AjaxController" method="deleteAgent">
+		</action>
+		
+		<action name="addAgent" class="bankelmaghrib.AjaxController" method="addAgent">
+		</action>
+		<action name="validateAgents" class="bankelmaghrib.AgentsAction" method="validateAgents">
+			<result name="success" type="chain">agents</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="updateAgent"  class="bankelmaghrib.AgentsAction" method="updateAgent">
+			<result name="success" type="chain">agents</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="detailsAgent" class="bankelmaghrib.AgentsAction" method="detailsAgent">
+			<result name="success" type="tiles">/updateAgent.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="searchPage" class="bankelmaghrib.AgentsAction" method="searchPage">
+			<result name="success" type="tiles">/rechercheAgent.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="searchAgent" class="bankelmaghrib.AgentsAction" method="searchAgent">
+			<result name="success" type="tiles">/rechercheAgent.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		
+		
+		
+		<action name="postes" class="bankelmaghrib.PostesAction">
+			<result name="success" type="tiles">/postes.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="searchPagePostes" class="bankelmaghrib.PostesAction" method="searchPagePostes">
+			<result name="success" type="tiles">/recherchePoste.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="searchPoste" class="bankelmaghrib.PostesAction" method="searchPoste">
+			<result name="success" type="tiles">/recherchePoste.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="detailsPoste" class="bankelmaghrib.PostesAction" method="detailsPoste">
+			<result name="success" type="tiles">/updatePost.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="addPoste" class="bankelmaghrib.AjaxController" method="addPoste">
+		</action>
+		<action name="updatePoste"  class="bankelmaghrib.PostesAction" method="updatePoste">
+			<result name="success" type="chain">postes</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="deletePoste" class="bankelmaghrib.AjaxController" method="deletePoste">
+		</action>
+		<action name="articles" class="bankelmaghrib.ArticlesAction">
+			<result name="success" type="tiles">/articles.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>	
+		<action name="searchArticle" class="bankelmaghrib.ArticlesAction" method="searchArticle">
+			<result name="success" type="tiles">/articles.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>	
+
+		
+			
+		
+		
+		
+		<action name="tenues" class="bankelmaghrib.TenuesAction">
+			<result name="success" type="tiles">/tenues.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="detailsTenue" class="bankelmaghrib.TenuesAction" method="details">
+			<result name="success" type="tiles">/detailTenue.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="detailsTenuePoste" class="bankelmaghrib.TenuesAction" method="detailsTenuePoste">
+			<result name="success" type="tiles">/detailTenue.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="deleteRelation" class="bankelmaghrib.AjaxController" method="deleteRelation">
+		</action>
+		<action name="addRelation" class="bankelmaghrib.AjaxController" method="addRelation">
+		</action>
+		<action name="incrementerQuantite" class="bankelmaghrib.AjaxController" method="incrementerQuantite">
+		</action>
+		<action name="decrementerQuantite" class="bankelmaghrib.AjaxController" method="decrementerQuantite">
+		</action>
+		
+		
+		
+		
+		
+		
+	
+
+		
+		
+		
+		<action name="commande">
+			<result name="success" type="tiles">/commande.tiles</result>
+		</action>
+		
+		
+		
+		<action name="demande" class="bankelmaghrib.demandeAction">
+			<result name="success" type="tiles">/demande.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="downloadDemande" class="bankelmaghrib.demandeAction" method="downloadDemande">
+	        <result name="success" type="stream">
+	            <param name="contentType">application/octet-stream</param>
+	            <param name="inputName">fileInputStream</param>
+	            <param name="contentDisposition">attachment;filename="COMMANDE_ACHAT.XLSX"</param>
+	            <param name="bufferSize">200000000</param>
+	        </result>
+	        <result name="logout" type="chain" >logout</result>
+    	</action> 
+		
+		
+
+		
+		
+		
+		<action name="mesures" class="bankelmaghrib.MesuresAction">
+			<result name="success" type="tiles">/mesures.tiles</result>
+		</action>		
+		<action name="downMesures" class="bankelmaghrib.MesuresAction" method="prepareFile">
+	        <result name="success" type="stream">
+	            <param name="contentType">application/octet-stream</param>
+	            <param name="inputName">fileInputStream</param>
+	            <param name="contentDisposition">attachment;filename="MESURES.XLSX"</param>
+	            <param name="bufferSize">200000000</param>
+	        </result>
+	        <result name="logout" type="chain" >logout</result>
+    	</action> 
+		<action name="mesureUpload" class="bankelmaghrib.UploadAction" method="execute2">
+		    <interceptor-ref name="fileUpload">
+       			<param name="allowedTypes">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel</param>
+       			<param name="maximumSize">200000000</param>
+  	    	</interceptor-ref>
+  	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">/successimportmesures.tiles</result>
+			<result name="error" type="tiles">/failedimportmesures.tiles</result>
+			<result name="input" type="tiles">/failedimportmesures.tiles</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		<action name="validateMesures" class="bankelmaghrib.MesuresAction" method="validateMesures">
+			<result name="success" type="chain">searchPage</result>
+			<result name="logout" type="chain" >logout</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		<action name="logout" class="bankelmaghrib.logoutAction">
+			<result name="success" >/Login.jsp</result>
+		</action>
+	</package>
+</struts>

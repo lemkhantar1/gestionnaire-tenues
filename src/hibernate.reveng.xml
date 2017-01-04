@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<type-mapping>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	</type-mapping>
+	<table-filter match-name="admin" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="agent" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="article" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="categorie"
+		match-catalog="bankelmaghrib">
+	</table-filter>
+	<table-filter match-name="mesure" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="poste" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="tenue" match-catalog="bankelmaghrib"></table-filter>
+	<table-filter match-name="tenue_article"
+		match-catalog="bankelmaghrib">
+	</table-filter>
+	<table catalog="bankelmaghrib" name="tenue">
+		<column name="intitule"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="categorie">
+		<column name="intitule"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="tenue_article">
+		<column name="id_article"></column>
+		<column name="id_tenue"></column>
+		<column name="id_article"></column>
+		<column name="id_tenue"></column>
+		<column name="quantite"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="article">
+		<column name="intitule"></column>
+		<column name="categorie"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="mesure">
+		<column name="id"></column>
+		<column name="taille"></column>
+		<column name="pointure"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="admin">
+		<column name="id"></column>
+		<column name="password"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="poste">
+		<column name="intitule"></column>
+		<column name="tenue"></column>
+	</table>
+	<table catalog="bankelmaghrib" name="agent">
+		<column name="id"></column>
+		<column name="nom"></column>
+		<column name="prenom"></column>
+		<column name="poste"></column>
+		<column name="mesure"></column>
+		<column name="entite"></column>
+		<column name="sexe"></column>
+	</table>
+</hibernate-reverse-engineering>

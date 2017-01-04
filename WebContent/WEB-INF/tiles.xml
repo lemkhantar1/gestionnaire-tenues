@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/BaseLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="menu" value="/Menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/Footer.jsp" />
+	</definition>
+	<definition name="/dashboard.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Tableau de bord" />
+		<put-attribute name="body" value="/Dashboard.jsp" />
+	</definition>
+	<definition name="/agents.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des agents" />
+		<put-attribute name="body" value="/Agents.jsp" />
+	</definition>
+	<definition name="/postes.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des postes" />
+		<put-attribute name="body" value="/Postes.jsp" />
+	</definition>
+	<definition name="/tenues.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des tenues" />
+		<put-attribute name="body" value="/Tenues.jsp" />
+	</definition>
+	<definition name="/articles.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des articles" />
+		<put-attribute name="body" value="/Articles.jsp" />
+	</definition>
+	<definition name="/commande.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Details de la commande" />
+		<put-attribute name="body" value="/Commande.jsp" />
+	</definition>
+	<definition name="/demande.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Demande d'achat" />
+		<put-attribute name="body" value="/Demande.jsp" />
+	</definition>
+	<definition name="/successimportagents.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des agents" />
+		<put-attribute name="body" value="/successImportAgents.jsp" />
+	</definition>
+	<definition name="/failedimportagents.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des agents" />
+		<put-attribute name="body" value="/failedImportAgents.jsp" />
+	</definition>
+	<definition name="/updateAgent.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des agents" />
+		<put-attribute name="body" value="/updateAgent.jsp" />
+	</definition>
+	<definition name="/rechercheAgent.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des agents" />
+		<put-attribute name="body" value="/rechercheAgent.jsp" />
+	</definition>
+	<definition name="/recherchePoste.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des postes" />
+		<put-attribute name="body" value="/recherchePoste.jsp" />
+	</definition>
+	<definition name="/updatePost.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des postes" />
+		<put-attribute name="body" value="/updatePoste.jsp" />
+	</definition>
+	<definition name="/detailTenue.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des Tenues" />
+		<put-attribute name="body" value="/detailsTenue.jsp" />
+	</definition>
+	<definition name="/mesures.tiles" extends="baseLayout">
+		<put-attribute name="title" value="GESTIONNAIRE DES MESURES" />
+		<put-attribute name="body" value="/fournisseur.jsp" />
+	</definition>
+		<definition name="/successimportmesures.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des mesures" />
+		<put-attribute name="body" value="/successImportMesures.jsp" />
+	</definition>
+	<definition name="/failedimportmesures.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Gestionnaire des mesures" />
+		<put-attribute name="body" value="/failedImportMesures.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+</tiles-definitions>
